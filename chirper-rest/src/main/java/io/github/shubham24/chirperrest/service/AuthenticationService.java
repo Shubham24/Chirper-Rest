@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import io.github.shubham24.chirperrest.model.dao.UserDAO;
+import io.github.shubham24.chirperrest.model.dto.UserLoginDTO;
 import io.github.shubham24.chirperrest.model.dto.UserRegisterDTO;
 import io.github.shubham24.chirperrest.repository.UserRepository;
 
@@ -40,6 +41,16 @@ public class AuthenticationService {
         // for testing purposes only, delete this toString return after we know authentication works
         return user.toString();
 
+    }
+
+    public UserDAO authenticate(UserLoginDTO loginDTO) {
+        UserDAO user = userRepository.findByUsername(loginDTO.getUsername()).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Username or password"));
+
+        if(!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid username or password");
+        }
+
+        return user;
     }
     
 }

@@ -1,11 +1,13 @@
 package io.github.shubham24.chirperrest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.shubham24.chirperrest.model.dao.UserDAO;
 import io.github.shubham24.chirperrest.model.dto.UserRegisterDTO;
 import io.github.shubham24.chirperrest.service.AuthenticationService;
 
@@ -17,8 +19,8 @@ public class AuthController {
     AuthenticationService authenticationService;
 
     @PostMapping("/login")
-    public String login() {
-        return "YOU CALLED THE LOGIN ENDPOINT";
+    public String login(@AuthenticationPrincipal UserDAO user) {
+        return user.toString(); // return user info right now... WIll return JWT Bearer token...
     }
 
     @PostMapping("/register")
