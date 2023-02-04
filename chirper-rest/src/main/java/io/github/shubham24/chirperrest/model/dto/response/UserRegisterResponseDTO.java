@@ -1,4 +1,4 @@
-package io.github.shubham24.chirperrest.model.dto;
+package io.github.shubham24.chirperrest.model.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

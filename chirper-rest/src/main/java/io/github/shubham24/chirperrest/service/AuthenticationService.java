@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import io.github.shubham24.chirperrest.model.dao.UserDAO;
-import io.github.shubham24.chirperrest.model.dto.UserLoginDTO;
-import io.github.shubham24.chirperrest.model.dto.UserRegisterDTO;
-import io.github.shubham24.chirperrest.model.dto.UserRegisterResponseDTO;
+import io.github.shubham24.chirperrest.model.dto.request.UserLoginDTO;
+import io.github.shubham24.chirperrest.model.dto.request.UserRegisterDTO;
+import io.github.shubham24.chirperrest.model.dto.response.UserRegisterResponseDTO;
 import io.github.shubham24.chirperrest.repository.UserRepository;
 
 @Service

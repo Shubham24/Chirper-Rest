@@ -18,7 +18,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 
 import io.github.shubham24.chirperrest.model.dao.UserDAO;
-import io.github.shubham24.chirperrest.model.dto.UserLoginDTO;
+import io.github.shubham24.chirperrest.model.dto.request.UserLoginDTO;
 import io.github.shubham24.chirperrest.service.AuthenticationService;
 
 
@@ -46,6 +46,7 @@ public class UserAuthenticationProvider {
     }
 
     public Authentication validateToken(String token) {
+
         Algorithm algorithm = Algorithm.HMAC512(secretKey);
 
         JWTVerifier verifier = JWT.require(algorithm).build();

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.github.shubham24.chirperrest.config.UserAuthenticationProvider;
 import io.github.shubham24.chirperrest.model.dao.UserDAO;
-import io.github.shubham24.chirperrest.model.dto.UserRegisterDTO;
-import io.github.shubham24.chirperrest.model.dto.UserRegisterResponseDTO;
+import io.github.shubham24.chirperrest.model.dto.request.UserRegisterDTO;
+import io.github.shubham24.chirperrest.model.dto.response.UserRegisterResponseDTO;
 import io.github.shubham24.chirperrest.service.AuthenticationService;
 
 @RestController
