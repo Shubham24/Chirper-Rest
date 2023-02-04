@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class PostCreateResponseDTO {
+public class PostResponseDTO {
     
     UUID id;
     String post;
