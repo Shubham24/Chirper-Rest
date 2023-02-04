@@ -1,3 +1,5 @@
 jwt:
   secret:
     key: plzdonthackme
+  expiration:
+    value: 3600000

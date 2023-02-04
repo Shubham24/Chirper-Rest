@@ -16,6 +16,9 @@ public class SecurityConfig {
 
     @Autowired
     UsernamePasswordAuthFilter usernamePasswordAuthFilter;
+    
+    @Autowired
+    JwtAuthFilter jwtAuthFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -23,6 +26,7 @@ public class SecurityConfig {
                 .exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
                 .and()
                 .addFilterBefore(usernamePasswordAuthFilter, BasicAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthFilter.class)
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()

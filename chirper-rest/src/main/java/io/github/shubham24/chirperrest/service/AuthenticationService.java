@@ -52,5 +52,9 @@ public class AuthenticationService {
 
         return user;
     }
+
+    public UserDAO findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+    }
     
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.shubham24.chirperrest.config.UserAuthenticationProvider;
 import io.github.shubham24.chirperrest.model.dao.UserDAO;
 import io.github.shubham24.chirperrest.model.dto.UserRegisterDTO;
 import io.github.shubham24.chirperrest.service.AuthenticationService;
@@ -18,9 +19,12 @@ public class AuthController {
     @Autowired
     AuthenticationService authenticationService;
 
+    @Autowired
+    UserAuthenticationProvider userAuthenticationProvider;
+
     @PostMapping("/login")
     public String login(@AuthenticationPrincipal UserDAO user) {
-        return user.toString(); // return user info right now... WIll return JWT Bearer token...
+        return "Bearer " + userAuthenticationProvider.createToken(user.getUsername());
     }
 
     @PostMapping("/register")
