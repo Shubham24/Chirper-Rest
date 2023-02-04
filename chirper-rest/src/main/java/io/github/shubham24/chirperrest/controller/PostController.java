@@ -40,4 +40,6 @@ public class PostController {
     public PostResponseDTO delete(@AuthenticationPrincipal UserDAO user, @PathVariable UUID id) {
         return postService.delete(user, id);
     }
+
+    
 }
