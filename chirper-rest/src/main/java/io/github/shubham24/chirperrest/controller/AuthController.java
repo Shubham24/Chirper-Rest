@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.github.shubham24.chirperrest.config.UserAuthenticationProvider;
 import io.github.shubham24.chirperrest.model.dao.UserDAO;
 import io.github.shubham24.chirperrest.model.dto.UserRegisterDTO;
+import io.github.shubham24.chirperrest.model.dto.UserRegisterResponseDTO;
 import io.github.shubham24.chirperrest.service.AuthenticationService;
 
 @RestController
@@ -24,11 +25,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@AuthenticationPrincipal UserDAO user) {
-        return "Bearer " + userAuthenticationProvider.createToken(user.getUsername());
+        return "Bearer " + userAuthenticationProvider.createToken(user.getUsername());  
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody UserRegisterDTO registerDTO) {
+    public UserRegisterResponseDTO register(@RequestBody UserRegisterDTO registerDTO) {
         return authenticationService.register(registerDTO);
     }
 }

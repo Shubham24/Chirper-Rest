@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import io.github.shubham24.chirperrest.model.dao.UserDAO;
 import io.github.shubham24.chirperrest.model.dto.UserLoginDTO;
 import io.github.shubham24.chirperrest.model.dto.UserRegisterDTO;
+import io.github.shubham24.chirperrest.model.dto.UserRegisterResponseDTO;
 import io.github.shubham24.chirperrest.repository.UserRepository;
 
 @Service
@@ -22,7 +23,7 @@ public class AuthenticationService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public String register(UserRegisterDTO registerDTO) {
+    public UserRegisterResponseDTO register(UserRegisterDTO registerDTO) {
         Optional<UserDAO> existingUser = userRepository.findByUsername(registerDTO.getUsername());
 
         if(existingUser.isPresent()) {
@@ -38,8 +39,7 @@ public class AuthenticationService {
 
         userRepository.save(user);
 
-        // for testing purposes only, delete this toString return after we know authentication works
-        return user.toString();
+        return UserRegisterResponseDTO.builder().username(user.getUsername()).firstname(user.getFirstName()).lastname(user.getLastName()).build();
 
     }
 

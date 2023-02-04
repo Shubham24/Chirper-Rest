@@ -1,6 +1,7 @@
 package io.github.shubham24.chirperrest.model.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
